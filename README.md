@@ -77,19 +77,19 @@ In case of exceeding the allowed percentage difference from the baseline, the re
             "baselineValue": "527.0",
             "latestValue": "1054.0",
             "increase": "100.0%",
-            "transaction": "Transaktion uno"
+            "transaction": "transaction uno"
         },
         {
             "baselineValue": "503.0",
             "latestValue": "1006.0",
             "increase": "100.0%",
-            "transaction": "Transaktion dos"
+            "transaction": "transaction dos"
         },
         {
             "baselineValue": "503.0",
             "latestValue": "1006.0",
             "increase": "100.0%",
-            "transaction": "Tramsaktion tres"
+            "transaction": "transaction tres"
         }
     ],
     "info": "Test failed because the increase from baseline is bigger than the allowed percentage value",
