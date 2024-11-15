@@ -131,3 +131,44 @@ docker run -d \
   -e Token=<admin_token> \
   your-dockerhub-username/neoloadcompare:latest
 
+This example demonstrates a simple pipeline to automate:
+1. Logging in to NeoLoad Web.
+2. Setting up test configurations.
+3. Uploading NeoLoad test files.
+4. Executing a test.
+5. Retrieving test comparison results using a `curl` command.
+
+```bash
+#!/usr/bin/bash
+
+# Configuration Variables
+workspace="demo"           # Workspace name
+token="xx"                 # Personal token
+scenario="demo_scenario"   # Scenario name
+testname="TEST"            # Test name in NeoLoad Web
+testpath="/git/mytests"    # Path to NeoLoad test files
+zone="abcs"                # NeoLoad Web zone for load generators (LGs) and controller
+
+# Step 1: Log in to NeoLoad Web
+neoload login --ssl-cert False \
+              --url https://neoload-api-endpoint \
+              --workspace $workspace $token
+
+# Step 2: Create or Patch Test Settings
+neoload test-settings --zone $zone \
+                      --lgs 1 \
+                      --scenario $scenario \
+                      createorpatch $testname
+
+# Step 3: Upload NeoLoad Project
+neoload project -p $testpath upload $testname
+
+# Step 4: Run the Test
+neoload run
+
+# NeoLoad Compare URL
+# Access comparison results at the following URL:
+# http://neoloadcompare-af-neoload-dev.apps.tocp4.arbetsformedlingen.se/NeoLoadCompare?workspace=demo&scenario=exempelScenario&baseline=1&percentage=10&element=avgduration
+
+# Step 5: Add Curl Command to Fetch Comparison URL Data
+curl -X GET "http://neoloadcompare-af-neoload-dev.apps.tocp4.arbetsformedlingen.se/NeoLoadCompare?workspace=demo&scenario=exempelScenario&baseline=1&percentage=10&element=avgduration"
