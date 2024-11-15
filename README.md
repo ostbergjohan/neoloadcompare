@@ -51,7 +51,7 @@ The following is an example of a successful response from NeoloadCompare:
 }
 
 
-### Example Response: 500 Internal Server Error (to trigger fail och pipeline)
+Example Response: 500 Internal Server Error (to trigger fail och pipeline)
 
 In case of an error, such as exceeding the allowed percentage difference from the baseline, the response may look like this:
 
