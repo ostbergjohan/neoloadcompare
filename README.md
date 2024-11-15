@@ -132,7 +132,18 @@ docker run -d \
   your-dockerhub-username/neoloadcompare:latest
 ```
 
-This example demonstrates a simple pipeline to automate:
+# Example Pipeline using NeoLoad CLI
+
+This example demonstrates how to create a simple pipeline using the [NeoLoad CLI](https://github.com/Neotys-Labs/neoload-cli), which allows you to run performance tests from the command line and integrate them into your CI/CD workflows.
+
+## Prerequisites
+
+Before you begin, make sure you have the following:
+
+- [NeoLoad CLI](https://github.com/Neotys-Labs/neoload-cli) installed on your machine.
+- Access to a NeoLoad project
+- Your NeoLoad test scenario configured and ready for execution.
+
 1. Logging in to NeoLoad Web.
 2. Setting up test configurations.
 3. Uploading NeoLoad test files.
