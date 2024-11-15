@@ -109,3 +109,25 @@ In case of an error, such as exceeding the allowed percentage difference from th
 - **info**: A message explaining why the test failed.
 - **element**: The performance metric that was compared (e.g., `avgDuration`).
 - **currenttest**: The ID or name of the current test being compared to the baseline.
+
+This repository contains the source code for the NeoLoad Compare Application, a tool designed to analyze and compare test results from NeoLoad.  
+
+The application is containerized and available as a prebuilt Docker image on Docker Hub.
+
+---
+
+## **Running the Application**
+
+### **Docker Hub Image**  
+The application is available on Docker Hub:  
+[**Docker Hub - NeoLoad Compare**](https://hub.docker.com/r/your-dockerhub-username/neoloadcompare)
+
+### **Running with Docker**  
+To run the application, use the following command:  
+```bash
+docker run -d \
+  -p 8080:8080 \
+  -e Server=<neoloadapi_server> \
+  -e Token=<admin_token> \
+  your-dockerhub-username/neoloadcompare:latest
+
