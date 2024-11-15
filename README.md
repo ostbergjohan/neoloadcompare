@@ -27,6 +27,7 @@ NeoloadCompare uses the following parameters:
 
 http://your_endpoint/NeoLoadCompare?workspace=demo&scenario=demo_scenario&baseline=1&percentage=10&element=avgduration
 
+### Example Response 200 OK
 The following is an example of a successful response from NeoloadCompare:
 
 ```json
@@ -51,7 +52,7 @@ The following is an example of a successful response from NeoloadCompare:
 }
 
 
-Example Response: 500 Internal Server Error (to trigger fail och pipeline)
+### Example Response: 500 Internal Server Error (to trigger fail och pipeline)
 
 In case of an error, such as exceeding the allowed percentage difference from the baseline, the response may look like this:
 
