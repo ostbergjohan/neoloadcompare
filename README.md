@@ -86,3 +86,15 @@ In case of an error, such as exceeding the allowed percentage difference from th
 }
 ```
 
+### Explanation of Fields:
+
+- **percentage**: The allowed percentage difference that was set for the test.
+- **baselinetest**: The ID of the baseline test that the current test is compared to.
+- **transactions**: A list of transactions that failed the comparison due to exceeding the allowed percentage difference.
+  - **baselineValue**: The baseline value for the transaction.
+  - **latestValue**: The value from the latest test for the transaction.
+  - **increase**: The percentage increase between the baseline value and the latest test value.
+  - **transaction**: The name or ID of the transaction that caused the failure.
+- **info**: A message explaining why the test failed.
+- **element**: The performance metric that was compared (e.g., `avgDuration`).
+- **currenttest**: The ID or name of the current test being compared to the baseline.
