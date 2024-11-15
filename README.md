@@ -120,7 +120,7 @@ The application is containerized and available as a prebuilt Docker image on Doc
 
 ### **Docker Hub Image**  
 The application is available on Docker Hub:  
-[**Docker Hub - NeoLoad Compare**](https://hub.docker.com/r/your-dockerhub-username/neoloadcompare)
+[**Docker Hub - NeoLoad Compare**](https://hub.docker.com/r/your-dockerhub-username/neoloadcompare](https://hub.docker.com/repository/docker/johanostberg/neoloadcompare))
 
 ### **Running with Docker**  
 To run the application, use the following command:  
