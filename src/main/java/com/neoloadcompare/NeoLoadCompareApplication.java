@@ -301,7 +301,7 @@ public class NeoLoadCompareApplication {
 		JSONArray jsonArray = new JSONArray(jsonString);
 		JSONObject object = jsonArray.getJSONObject(0);
 		if (object.get("scenario").toString().equals(Scenario)) {
-			//log.info("Jämför baseline mot senaste testet:" + object.get("name").toString());
+
 		} else {
 			return "1";
 		}
