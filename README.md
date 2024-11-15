@@ -169,9 +169,7 @@ neoload project -p $testpath upload $testname
 neoload run
 
 # NeoLoad Compare URL
-# Access comparison results at the following URL:
-# http://neoloadcompare-af-neoload-dev.apps.tocp4.arbetsformedlingen.se/NeoLoadCompare?workspace=demo&scenario=exempelScenario&baseline=1&percentage=10&element=avgduration
 
 # Step 5: Add Curl Command to Fetch Comparison URL Data
-curl -X GET "http://neoloadcompare-af-neoload-dev.apps.tocp4.arbetsformedlingen.se/NeoLoadCompare?workspace=demo&scenario=exempelScenario&baseline=1&percentage=10&element=avgduration"
+curl -X GET "http://api-endpoint/NeoLoadCompare?workspace=demo&scenario=exempelScenario&baseline=1&percentage=10&element=avgduration"
 ```
