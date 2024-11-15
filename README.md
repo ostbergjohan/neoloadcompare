@@ -36,7 +36,7 @@ The following is an example of a successful response from NeoloadCompare:
         "id": "62568bb580cec421c189ff01"
     },
     "comparison": {
-        "percentageDifference": "60",
+        "percentageDifference": "1",
         "element": "avgDuration"
     },
     "latestTest": {
@@ -49,3 +49,26 @@ The following is an example of a successful response from NeoloadCompare:
     },
     "status": "Check against baseline OK!"
 }
+
+
+### Example Response: 500 Internal Server Error (to trigger fail och pipeline)
+
+In case of an error, such as exceeding the allowed percentage difference from the baseline, the response may look like this:
+
+```json
+{
+    "percentage": "50%",
+    "baselinetest": "6",
+    "transactions": [
+        {
+            "baselineValue": "542.0",
+            "latestValue": "869.0",
+            "increase": "60.0%",
+            "transaction": "get-stub-wiremock-faker"
+        }
+    ],
+    "info": "Test failed because the increase from baseline is bigger than the allowed percentage value",
+    "element": "avgDuration",
+    "currenttest": "#11"
+}
+
