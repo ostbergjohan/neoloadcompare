@@ -129,7 +129,7 @@ docker run -d \
   -p 8080:8080 \
   -e Server=<neoloadapi_server> \
   -e Token=<admin_token> \
-  your-dockerhub-username/neoloadcompare:latest
+  johanostberg/neoloadcompare:latest
 ```
 
 # Example Pipeline using NeoLoad CLI
