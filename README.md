@@ -70,19 +70,30 @@ In case of an error, such as exceeding the allowed percentage difference from th
 
 ```json
 {
-    "percentage": "50%",
-    "baselinetest": "6",
+    "percentage": "30%",
+    "baselinetest": "1",
     "transactions": [
         {
-            "baselineValue": "542.0",
-            "latestValue": "869.0",
-            "increase": "60.0%",
-            "transaction": "get-stub-wiremock-faker"
+            "baselineValue": "527.0",
+            "latestValue": "1054.0",
+            "increase": "100.0%",
+            "transaction": "Transaktion uno"
+        },
+        {
+            "baselineValue": "503.0",
+            "latestValue": "1006.0",
+            "increase": "100.0%",
+            "transaction": "Transaktion dos"
+        },
+        {
+            "baselineValue": "503.0",
+            "latestValue": "1006.0",
+            "increase": "100.0%",
+            "transaction": "Tramsaktion tres"
         }
     ],
     "info": "Test failed because the increase from baseline is bigger than the allowed percentage value",
-    "element": "avgDuration",
-    "currenttest": "#11"
+    "element": "avgDuration"
 }
 ```
 
