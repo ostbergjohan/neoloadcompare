@@ -130,6 +130,7 @@ docker run -d \
   -e Server=<neoloadapi_server> \
   -e Token=<admin_token> \
   your-dockerhub-username/neoloadcompare:latest
+```
 
 This example demonstrates a simple pipeline to automate:
 1. Logging in to NeoLoad Web.
@@ -137,7 +138,7 @@ This example demonstrates a simple pipeline to automate:
 3. Uploading NeoLoad test files.
 4. Executing a test.
 5. Retrieving test comparison results using a `curl` command.
-```
+
 
 ```bash
 #!/usr/bin/bash
