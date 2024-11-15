@@ -145,7 +145,7 @@ This example demonstrates a simple pipeline to automate:
 
 # Configuration Variables
 workspace="demo"           # Workspace name
-token="xx"                 # Personal token
+token="xx"                 # Personal NeoloadWeb token
 scenario="demo_scenario"   # Scenario name
 testname="TEST"            # Test name in NeoLoad Web
 testpath="/git/mytests"    # Path to NeoLoad test files
@@ -171,5 +171,5 @@ neoload run
 # NeoLoad Compare URL
 
 # Step 5: Add Curl Command to Fetch Comparison URL Data
-curl -X GET "http://api-endpoint/NeoLoadCompare?workspace=demo&scenario=exempelScenario&baseline=1&percentage=10&element=avgduration"
+curl -X GET "http://api-endpoint/NeoLoadCompare?workspace=demo&scenario=demo_scenario&baseline=1&percentage=10&element=avgduration"
 ```
