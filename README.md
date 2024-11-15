@@ -50,6 +50,7 @@ The following is an example of a successful response from NeoloadCompare:
     },
     "status": "Check against baseline OK!"
 }
+```
 
 ### Example Response: 500 Internal Server Error (to trigger fail och pipeline)
 
@@ -71,4 +72,5 @@ In case of an error, such as exceeding the allowed percentage difference from th
     "element": "avgDuration",
     "currenttest": "#11"
 }
+```
 
