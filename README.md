@@ -66,7 +66,7 @@ The following is an example of a successful response from NeoloadCompare:
 
 ### Example Response: 500 Internal Server Error (to trigger fail of pipeline)
 
-In case of an error, such as exceeding the allowed percentage difference from the baseline, the response may look like this:
+In case of exceeding the allowed percentage difference from the baseline, the response may look like this:
 
 ```json
 {
@@ -184,3 +184,5 @@ neoload run
 # Step 5: Add Curl Command to Fetch Comparison URL Data
 curl -X GET "http://api-endpoint/NeoLoadCompare?workspace=demo&scenario=demo_scenario&baseline=1&percentage=10&element=avgduration"
 ```
+If the allowed percentage difference from the baseline is exceeded, the response code returned will be a 500 Internal Server Error. This will cause most CI/CD tool runs to fail automatically.
+
