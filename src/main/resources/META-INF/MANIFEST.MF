@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Main-Class: com.neoloadcompare.NeoLoadCompareApplication
+Class-Path: spring-boot-starter-3.3.4.jar spring-boot-starter-json-3.3.4
+ .jar micrometer-commons-1.13.4.jar jackson-databind-2.17.2.jar jakarta.
+ annotation-api-2.1.1.jar unbescape-1.1.6.RELEASE.jar spring-jcl-6.1.13.
+ jar commons-lang3-3.14.0.jar jackson-module-parameter-names-2.17.2.jar 
+ jakarta.xml.bind-api-4.0.2.jar jackson-annotations-2.17.2.jar jackson-c
+ ore-2.17.2.jar spring-webmvc-6.1.13.jar jul-to-slf4j-2.0.16.jar jna-5.3
+ .1.jar springdoc-openapi-starter-common-2.6.0.jar attoparser-2.0.7.RELE
+ ASE.jar tomcat-embed-core-10.1.30.jar spring-core-6.1.13.jar swagger-an
+ notations-jakarta-2.2.22.jar log4j-core-2.23.1.jar tomcat-embed-el-10.1
+ .30.jar swagger-ui-5.17.14.jar micrometer-observation-1.13.4.jar spring
+ -context-6.1.13.jar commons-logging-1.2.jar thymeleaf-3.1.2.RELEASE.jar
+  swagger-models-jakarta-2.2.22.jar springdoc-openapi-starter-webmvc-ui-
+ 2.6.0.jar logback-core-1.5.8.jar spring-boot-starter-thymeleaf-3.3.4.ja
+ r spring-boot-starter-web-3.3.4.jar spring-boot-autoconfigure-3.3.4.jar
+  jackson-dataformat-yaml-2.17.2.jar commons-codec-1.16.1.jar spring-boo
+ t-starter-tomcat-3.3.4.jar thymeleaf-spring6-3.1.2.RELEASE.jar spring-e
+ xpression-6.1.13.jar spring-aop-6.1.13.jar slf4j-api-2.0.16.jar json-20
+ 220924.jar jackson-datatype-jsr310-2.17.2.jar spring-boot-3.3.4.jar htt
+ pclient-4.5.14.jar jakarta.validation-api-3.0.2.jar jna-platform-5.3.1.
+ jar snakeyaml-2.2.jar logback-classic-1.5.8.jar spring-web-6.1.13.jar a
+ pm-agent-attach-1.52.0.jar swagger-core-jakarta-2.2.22.jar springdoc-op
+ enapi-starter-webmvc-api-2.6.0.jar spring-beans-6.1.13.jar spring-boot-
+ starter-logging-3.3.4.jar httpcore-4.4.16.jar jackson-datatype-jdk8-2.1
+ 7.2.jar jakarta.activation-api-2.1.3.jar tomcat-embed-websocket-10.1.30
+ .jar log4j-api-2.23.1.jar log4j-to-slf4j-2.23.1.jar
+

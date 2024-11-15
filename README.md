@@ -77,19 +77,19 @@ In case of an error, such as exceeding the allowed percentage difference from th
             "baselineValue": "527.0",
             "latestValue": "1054.0",
             "increase": "100.0%",
-            "transaction": "Transaction uno"
+            "transaction": "Transaktion uno"
         },
         {
             "baselineValue": "503.0",
             "latestValue": "1006.0",
             "increase": "100.0%",
-            "transaction": "Transaction dos"
+            "transaction": "Transaktion dos"
         },
         {
             "baselineValue": "503.0",
             "latestValue": "1006.0",
             "increase": "100.0%",
-            "transaction": "Tramsaction tres"
+            "transaction": "Tramsaktion tres"
         }
     ],
     "info": "Test failed because the increase from baseline is bigger than the allowed percentage value",
@@ -109,26 +109,3 @@ In case of an error, such as exceeding the allowed percentage difference from th
 - **info**: A message explaining why the test failed.
 - **element**: The performance metric that was compared (e.g., `avgDuration`).
 - **currenttest**: The ID or name of the current test being compared to the baseline.
-
-### The description of the testrun in NeoLoad web will also get updated if the check fails:
-
-NeoLoadCompare:
-percentage:10%
-baselinetest:1
-info:Test failed because the increase from baseline is bigger than the allowed percentage value
-element:avgDuration
-
-baselineValue:527 
-latestValue:1054 
-increase:100 %
-transaction:Transaction uno
-
-baselineValue:503 
-latestValue:1006 
-increase:100 %
-transaction:Transaction dos
-
-baselineValue:503 
-latestValue:1006 
-increase:100 %
-transaction:Transaction tres

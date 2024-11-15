@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoLoadCompare README</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            font-size: 1.1em;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>NeoLoadCompare</h1>
+
+<p><a href="/swagger-ui/index.html#/" target="_blank">Go to Swagger UI</a></p>
+
+<h2>Overview</h2>
+<p>NeoLoadCompare is a tool used to compare performance test results against a baseline. It leverages NeoLoad Web's API for detailed analysis and validation. It is often integrated into pipelines to ensure performance standards are met.</p>
+
+<h2>Usage</h2>
+<p>The tool can be accessed using the following URL format:</p>
+
+<pre><code>http://neoloadcompare-af-neoload-acc.apps.tocp4.arbetsformedlingen.se/NeoLoadCompare?workspace=demo&scenario=demo_scenario&baseline=1&percentage=25&element=avgduration</code></pre>
+
+<h3>Parameters</h3>
+<ul>
+    <li><strong>workspace</strong>: The name of the workspace where the test is located.</li>
+    <li><strong>scenario</strong>: The name of the scenario being tested.</li>
+    <li><strong>baseline</strong>: The ID of the baseline test for comparison.</li>
+    <li><strong>percentage</strong>: The allowed percentage difference before a test fails.</li>
+    <li><strong>element</strong>: The performance metric to compare (e.g., <code>avgduration</code>).</li>
+</ul>
+
+<h2>Example Responses</h2>
+
+<h3>Success Response</h3>
+<pre><code>{
+    "workspace": {
+        "name": "demo",
+        "id": "62568bb580cec421c189ff01"
+    },
+    "comparison": {
+        "percentageDifference": "1",
+        "element": "avgDuration"
+    },
+    "latestTest": {
+        "name": "#11",
+        "testId": "4cc0ccc3-f3f2-4325-b201-9f5f68607a61"
+    },
+    "baseline": {
+        "name": "6",
+        "testId": "080a9251-c653-4279-abd3-7fc5e17a54ad"
+    },
+    "status": "Check against baseline OK!"
+}</code></pre>
+
+<h3>Error Response</h3>
+<pre><code>{
+    "percentage": "50%",
+    "baselinetest": "6",
+    "transactions": [{
+        "baselineValue": "542.0",
+        "latestValue": "869.0",
+        "increase": "60.0%",
+        "transaction": "get-stub-wiremock-faker"
+    }],
+    "info": "Test failed because the increase from baseline is bigger than the allowed percentage value",
+    "element": "avgDuration",
+    "currenttest": "#11"
+}</code></pre>
+
+<h2>Explanation of Fields</h2>
+<ul>
+    <li><strong>percentage</strong>: The allowed percentage difference that was set for the test.</li>
+    <li><strong>baselinetest</strong>: The ID of the baseline test that the current test is compared to.</li>
+    <li><strong>transactions</strong>: A list of transactions that failed the comparison due to exceeding the allowed percentage difference.
+        <ul>
+            <li><strong>baselineValue</strong>: The baseline value for the transaction.</li>
+            <li><strong>latestValue</strong>: The value from the latest test for the transaction.</li>
+            <li><strong>increase</strong>: The percentage increase between the baseline value and the latest test value.</li>
+            <li><strong>transaction</strong>: The name or ID of the transaction that caused the failure.</li>
+        </ul>
+    </li>
+    <li><strong>info</strong>: A message explaining why the test failed.</li>
+    <li><strong>element</strong>: The performance metric that was compared (e.g., <code>avgDuration</code>).</li>
+    <li><strong>currenttest</strong>: The ID or name of the current test being compared to the baseline.</li>
+</ul>
+
+<h2>Status Codes</h2>
+<ul>
+    <li><strong>200 OK</strong>: The comparison was successful and met the defined criteria.</li>
+    <li><strong>500 Internal Server Error</strong>: The test failed because the increase in transaction response time exceeded the allowed percentage from the baseline.</li>
+</ul>
+
+</body>
+</html>
