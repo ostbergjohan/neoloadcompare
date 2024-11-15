@@ -137,6 +137,7 @@ This example demonstrates a simple pipeline to automate:
 3. Uploading NeoLoad test files.
 4. Executing a test.
 5. Retrieving test comparison results using a `curl` command.
+```
 
 ```bash
 #!/usr/bin/bash
@@ -172,3 +173,4 @@ neoload run
 
 # Step 5: Add Curl Command to Fetch Comparison URL Data
 curl -X GET "http://neoloadcompare-af-neoload-dev.apps.tocp4.arbetsformedlingen.se/NeoLoadCompare?workspace=demo&scenario=exempelScenario&baseline=1&percentage=10&element=avgduration"
+```
