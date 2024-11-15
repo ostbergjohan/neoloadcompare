@@ -96,7 +96,7 @@ In case of exceeding the allowed percentage difference from the baseline, the re
     "element": "avgDuration"
 }
 ```
-The description of the test run in NeoLoad Web will also be updated with this information.
+The description of the testrun in NeoLoad Web will also be updated with this information.
 
 ### Explanation of Fields:
 
