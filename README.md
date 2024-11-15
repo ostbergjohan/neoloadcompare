@@ -96,6 +96,7 @@ In case of exceeding the allowed percentage difference from the baseline, the re
     "element": "avgDuration"
 }
 ```
+The description of the test run in NeoLoad Web will also be updated with this information.
 
 ### Explanation of Fields:
 
@@ -110,7 +111,6 @@ In case of exceeding the allowed percentage difference from the baseline, the re
 - **element**: The performance metric that was compared (e.g., `avgDuration`).
 - **currenttest**: The ID or name of the current test being compared to the baseline.
 
-This repository contains the source code for the NeoLoad Compare Application, a tool designed to analyze and compare test results from NeoLoad.  
 
 The application is containerized and available as a prebuilt Docker image on Docker Hub.
 
