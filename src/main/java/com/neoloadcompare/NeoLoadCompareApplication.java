@@ -1,5 +1,8 @@
 package com.neoloadcompare;
 
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
@@ -37,7 +40,34 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
-
+@OpenAPIDefinition(
+		info = @Info(
+				title = "NeoLoad Compare",
+				version = "v1.0",
+				description = "NeoLoad Compare API to validate performance test results against baseline metrics.\n" +
+						"Endpoints:\n" +
+						"**Health**\n" +
+						"1. **GET /healthcheck** - API health check.\n\n" +
+						"**Performance Comparison**\n" +
+						"2. **GET /NeoLoadCompare** - Compare latest test results against baseline.\n" +
+						"   - **Parameters:**\n" +
+						"     - `workspace` (required) - Workspace name\n" +
+						"     - `scenario` (required) - Scenario name to compare\n" +
+						"     - `baseline` (required) - Baseline test number (e.g., 1, 2, 3)\n" +
+						"     - `percentage` (required) - Allowed percentage increase threshold\n" +
+						"     - `element` (required) - Metric to compare: avgduration, percentile90, percentile95, percentile99, or false\n" +
+						"   - **Example:** `/NeoLoadCompare?workspace=demo&scenario=demo_scenario&baseline=1&percentage=10&element=avgduration`\n" +
+						"   - **Response:** Returns comparison results with status OK or FAILED if thresholds exceeded.\n\n" +
+						"**Configuration:**\n" +
+						"Requires environment variables:\n" +
+						"- `Server` - NeoLoad API server URL (e.g., http://neoload.example.com)\n" +
+						"- `Token` - NeoLoad API authentication token\n"
+		),
+		externalDocs = @ExternalDocumentation(
+				description = "GitHub Repository",
+				url = "https://github.com/ostbergjohan/neoloadcompare"
+		)
+)
 @SpringBootApplication
 @RestController
 
