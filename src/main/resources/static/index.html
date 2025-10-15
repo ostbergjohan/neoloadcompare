@@ -3,127 +3,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoLoadCompare README</title>
+    <title>NeoLoadCompare - Performance Test Baseline Comparison</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
-            margin: 20px;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
-        h1, h2, h3 {
-            color: #333;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
         }
         pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            overflow-x: auto;
             white-space: pre-wrap;
             word-wrap: break-word;
         }
         code {
-            background-color: #f4f4f4;
-            padding: 2px 4px;
-            font-size: 1.1em;
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            font-size: 0.95em;
+            border-radius: 3px;
+            color: #e83e8c;
+            font-family: 'Courier New', monospace;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #333;
         }
         ul {
             list-style-type: disc;
             margin-left: 20px;
         }
         li {
-            margin: 10px 0;
+            margin: 8px 0;
         }
         a {
             text-decoration: none;
-            color: #007bff;
+            color: #3498db;
+            font-weight: 500;
         }
         a:hover {
             text-decoration: underline;
         }
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+        .button-link:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+        }
+        .info-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .error-box {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
     </style>
 </head>
 <body>
+<div class="container">
+    <h1>🚀 NeoLoadCompare</h1>
 
-<h1>NeoLoadCompare</h1>
+    <p>
+        <a href="/swagger-ui/index.html" class="button-link" target="_blank">📚 Open API Documentation (Swagger UI)</a>
+    </p>
 
-<p><a href="/swagger-ui/index.html#/" target="_blank">Go to Swagger UI</a></p>
+    <h2>Overview</h2>
+    <p>
+        NeoLoadCompare automatically compares performance test results against a baseline using NeoLoad Web's API.
+        It validates transaction response times, percentiles, and triggers a failure if discrepancies exceed the defined
+        threshold percentage. This tool is commonly integrated into CI/CD pipelines to enforce performance standards.
+    </p>
 
-<h2>Overview</h2>
-<p>NeoLoadCompare is a tool used to compare performance test results against a baseline. It leverages NeoLoad Web's API for detailed analysis and validation. It is often integrated into pipelines to ensure performance standards are met.</p>
+    <div class="info-box">
+        <strong>GitHub Repository:</strong>
+        <a href="https://github.com/ostbergjohan/neoloadcompare" target="_blank">
+            https://github.com/ostbergjohan/neoloadcompare
+        </a>
+    </div>
 
-<h2>Usage</h2>
-<p>The tool can be accessed using the following URL format:</p>
+    <h2>Quick Start</h2>
 
-<pre><code>http://neoloadcompare-af-neoload-acc.apps.tocp4.arbetsformedlingen.se/NeoLoadCompare?workspace=demo&scenario=demo_scenario&baseline=1&percentage=25&element=avgduration</code></pre>
+    <h3>API Endpoint Format</h3>
+    <pre><code>GET /NeoLoadCompare?workspace={workspace}&scenario={scenario}&baseline={baseline}&percentage={percentage}&element={element}</code></pre>
 
-<h3>Parameters</h3>
-<ul>
-    <li><strong>workspace</strong>: The name of the workspace where the test is located.</li>
-    <li><strong>scenario</strong>: The name of the scenario being tested.</li>
-    <li><strong>baseline</strong>: The ID of the baseline test for comparison.</li>
-    <li><strong>percentage</strong>: The allowed percentage difference before a test fails.</li>
-    <li><strong>element</strong>: The performance metric to compare (e.g., <code>avgduration</code>).</li>
-</ul>
+    <h3>Example Request</h3>
+    <pre><code>http://localhost:8080/NeoLoadCompare?workspace=demo&scenario=demo_scenario&baseline=1&percentage=10&element=avgduration</code></pre>
 
-<h2>Example Responses</h2>
+    <h2>Parameters</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Required</th>
+            <th>Description</th>
+            <th>Example Values</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>workspace</code></td>
+            <td>✅ Yes</td>
+            <td>The name of the NeoLoad workspace</td>
+            <td>demo, production, qa-env</td>
+        </tr>
+        <tr>
+            <td><code>scenario</code></td>
+            <td>✅ Yes</td>
+            <td>The name of the test scenario</td>
+            <td>demo_scenario, load_test_v2</td>
+        </tr>
+        <tr>
+            <td><code>baseline</code></td>
+            <td>✅ Yes</td>
+            <td>The baseline test number for comparison</td>
+            <td>1, 5, 10</td>
+        </tr>
+        <tr>
+            <td><code>percentage</code></td>
+            <td>✅ Yes</td>
+            <td>Maximum allowed percentage increase from baseline</td>
+            <td>5, 10, 25</td>
+        </tr>
+        <tr>
+            <td><code>element</code></td>
+            <td>✅ Yes</td>
+            <td>Performance metric to compare</td>
+            <td>avgduration, percentile90, percentile95, percentile99, false</td>
+        </tr>
+        </tbody>
+    </table>
 
-<h3>Success Response</h3>
-<pre><code>{
+    <div class="info-box">
+        <strong>Note:</strong> Setting <code>element=false</code> disables baseline comparison and returns immediately.
+    </div>
+
+    <h2>Response Examples</h2>
+
+    <h3>✅ Success Response (HTTP 200)</h3>
+    <p>When all transactions are within the acceptable threshold:</p>
+    <pre><code>{
     "workspace": {
         "name": "demo",
         "id": "62568bb580cec421c189ff01"
     },
+    "baseline": {
+        "testId": "080a9251-c653-4279-abd3-7fc5e17a54ad",
+        "name": "1"
+    },
     "comparison": {
-        "percentageDifference": "1",
+        "percentageDifference": "10",
         "element": "avgDuration"
     },
     "latestTest": {
-        "name": "#11",
-        "testId": "4cc0ccc3-f3f2-4325-b201-9f5f68607a61"
-    },
-    "baseline": {
-        "name": "6",
-        "testId": "080a9251-c653-4279-abd3-7fc5e17a54ad"
+        "testId": "4cc0ccc3-f3f2-4325-b201-9f5f68607a61",
+        "name": "#15"
     },
     "status": "Check against baseline OK!"
 }</code></pre>
 
-<h3>Error Response</h3>
-<pre><code>{
-    "percentage": "50%",
-    "baselinetest": "6",
-    "transactions": [{
-        "baselineValue": "542.0",
-        "latestValue": "869.0",
-        "increase": "60.0%",
-        "transaction": "get-stub-wiremock-faker"
-    }],
+    <h3>❌ Failure Response (HTTP 500)</h3>
+    <p>When one or more transactions exceed the threshold:</p>
+    <pre><code>{
     "info": "Test failed because the increase from baseline is bigger than the allowed percentage value",
     "element": "avgDuration",
-    "currenttest": "#11"
+    "percentage": "10%",
+    "baselinetest": "1",
+    "transactions": [
+        {
+            "baselineValue": "542.0",
+            "latestValue": "869.0",
+            "increase": "60.0%",
+            "transaction": "get-stub-wiremock-faker"
+        },
+        {
+            "baselineValue": "325.0",
+            "latestValue": "450.0",
+            "increase": "38.5%",
+            "transaction": "create-user-api"
+        }
+    ]
 }</code></pre>
 
-<h2>Explanation of Fields</h2>
-<ul>
-    <li><strong>percentage</strong>: The allowed percentage difference that was set for the test.</li>
-    <li><strong>baselinetest</strong>: The ID of the baseline test that the current test is compared to.</li>
-    <li><strong>transactions</strong>: A list of transactions that failed the comparison due to exceeding the allowed percentage difference.
-        <ul>
-            <li><strong>baselineValue</strong>: The baseline value for the transaction.</li>
-            <li><strong>latestValue</strong>: The value from the latest test for the transaction.</li>
-            <li><strong>increase</strong>: The percentage increase between the baseline value and the latest test value.</li>
-            <li><strong>transaction</strong>: The name or ID of the transaction that caused the failure.</li>
+    <h2>Response Fields Explained</h2>
+
+    <h3>Success Response Fields</h3>
+    <ul>
+        <li><strong>workspace</strong>: Contains workspace name and ID</li>
+        <li><strong>baseline</strong>: Information about the baseline test used for comparison</li>
+        <li><strong>comparison</strong>: Details of the comparison criteria (percentage threshold and element)</li>
+        <li><strong>latestTest</strong>: Information about the most recent test that was compared</li>
+        <li><strong>status</strong>: Overall status message</li>
+    </ul>
+
+    <h3>Failure Response Fields</h3>
+    <ul>
+        <li><strong>info</strong>: Explanation message for the failure</li>
+        <li><strong>element</strong>: The performance metric that was compared (e.g., avgDuration, percentile90)</li>
+        <li><strong>percentage</strong>: The allowed percentage threshold that was exceeded</li>
+        <li><strong>baselinetest</strong>: The baseline test number</li>
+        <li><strong>transactions</strong>: Array of transactions that failed the comparison
+            <ul>
+                <li><strong>baselineValue</strong>: The baseline value for the transaction (in milliseconds)</li>
+                <li><strong>latestValue</strong>: The value from the latest test (in milliseconds)</li>
+                <li><strong>increase</strong>: The percentage increase from baseline</li>
+                <li><strong>transaction</strong>: The name of the transaction that failed</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>HTTP Status Codes</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Status Code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><strong>200 OK</strong></td>
+            <td>All transactions passed the baseline comparison within the defined threshold</td>
+        </tr>
+        <tr>
+            <td><strong>500 Internal Server Error</strong></td>
+            <td>One or more transactions exceeded the allowed percentage increase from baseline</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Configuration</h2>
+
+    <div class="warning-box">
+        <strong>Required Environment Variables:</strong>
+        <ul style="margin: 10px 0;">
+            <li><code>Server</code> - NeoLoad API server URL (e.g., https://neoload-api.example.com)</li>
+            <li><code>Token</code> - NeoLoad API authentication token</li>
         </ul>
-    </li>
-    <li><strong>info</strong>: A message explaining why the test failed.</li>
-    <li><strong>element</strong>: The performance metric that was compared (e.g., <code>avgDuration</code>).</li>
-    <li><strong>currenttest</strong>: The ID or name of the current test being compared to the baseline.</li>
-</ul>
+    </div>
 
-<h2>Status Codes</h2>
-<ul>
-    <li><strong>200 OK</strong>: The comparison was successful and met the defined criteria.</li>
-    <li><strong>500 Internal Server Error</strong>: The test failed because the increase in transaction response time exceeded the allowed percentage from the baseline.</li>
-</ul>
+    <h3>Docker/Podman Deployment</h3>
+    <pre><code># Build the image
+podman build -t neoloadcompare:latest -f Containerfile .
 
+# Run with environment variables
+podman run -d \
+  -e Server="https://your-neoload-server.com" \
+  -e Token="your-api-token" \
+  -p 8080:8080 \
+  --name neoloadcompare \
+  neoloadcompare:latest</code></pre>
+
+    <h3>Kubernetes Deployment</h3>
+    <pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: neoloadcompare-config
+data:
+  server: "https://your-neoload-server.com"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: neoloadcompare-secret
+type: Opaque
+stringData:
+  token: "your-api-token"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neoloadcompare
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neoloadcompare
+  template:
+    metadata:
+      labels:
+        app: neoloadcompare
+    spec:
+      containers:
+      - name: neoloadcompare
+        image: neoloadcompare:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: Server
+          valueFrom:
+            configMapKeyRef:
+              name: neoloadcompare-config
+              key: server
+        - name: Token
+          valueFrom:
+            secretKeyRef:
+              name: neoloadcompare-secret
+              key: token</code></pre>
+
+    <h2>CI/CD Pipeline Integration</h2>
+
+    <h3>Jenkins Pipeline Example</h3>
+    <pre><code>stage('Performance Test Validation') {
+    steps {
+        script {
+            def response = sh(
+                script: """
+                    curl -s -o response.json -w "%{http_code}" \
+                    "http://neoloadcompare:8080/NeoLoadCompare?\
+workspace=production&\
+scenario=api_load_test&\
+baseline=5&\
+percentage=10&\
+element=avgduration"
+                """,
+                returnStdout: true
+            ).trim()
+
+            if (response != "200") {
+                def result = readJSON file: 'response.json'
+                error("Performance test failed: ${result.info}")
+            }
+        }
+    }
+}</code></pre>
+
+    <h3>GitLab CI Example</h3>
+    <pre><code>performance_validation:
+  stage: test
+  script:
+    - |
+      HTTP_CODE=$(curl -s -o response.json -w "%{http_code}" \
+        "http://neoloadcompare:8080/NeoLoadCompare?\
+workspace=production&\
+scenario=api_load_test&\
+baseline=5&\
+percentage=10&\
+element=avgduration")
+
+      if [ "$HTTP_CODE" != "200" ]; then
+        cat response.json
+        exit 1
+      fi
+  artifacts:
+    when: always
+    paths:
+      - response.json</code></pre>
+
+    <h2>Health Check</h2>
+    <p>Verify the service is running:</p>
+    <pre><code>GET /healthcheck
+
+Response:
+{
+    "status": "ok",
+    "service": "API Health Check"
+}</code></pre>
+
+    <h2>Additional Resources</h2>
+    <ul>
+        <li><a href="/swagger-ui/index.html" target="_blank">Interactive API Documentation (Swagger UI)</a></li>
+        <li><a href="/v3/api-docs" target="_blank">OpenAPI JSON Specification</a></li>
+        <li><a href="https://github.com/ostbergjohan/neoloadcompare" target="_blank">GitHub Repository</a></li>
+        <li><a href="https://www.tricentis.com/products/performance-testing-neoload" target="_blank">NeoLoad Documentation</a></li>
+    </ul>
+
+    <div class="info-box">
+        <strong>Version:</strong> 1.0<br>
+        <strong>Java Version:</strong> 21<br>
+        <strong>Spring Boot:</strong> 3.3.4
+    </div>
+</div>
 </body>
 </html>
